@@ -102,4 +102,48 @@
   .btn--form{
     margin-top: 2.4rem;
   }
+  .btn-mobile-nav{
+    display: block;
+  }
+  /* MENU BUTTON FOR NAVBAR */
+  .main-nav{
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transform: translateX(100%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Hide Navigation */
+    /* display: none; */
+    opacity: 0;             /* Hide visually */
+    pointer-events: none;   /* unaccessible to mouse & kb */
+    visibility: hidden;     /* hide from screen readers */
+    transition: all 0.5s ease-in;
+  }
+  .nav-open .main-nav{
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  }
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+  display: block;
+  }
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+  display: none;
+  }
+  .main-nav-list{
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+  .main-nav-link:link,
+  .main-nav-link:visited{
+    font-size: 3rem;
+  }
 }
