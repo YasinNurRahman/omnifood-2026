@@ -1,6 +1,7 @@
 /************************/
 /* BELOW 1344px (smaller desktops) */
 /************************/
+/* 1344px / 16px = 84 */
 @media (max-width: 84em) {
   .hero{
     max-width: 120rem;
@@ -16,6 +17,7 @@
 /************************/
 /* BELOW 1200px (landscape tablets) */
 /************************/
+/* 1200px / 16px = 75 */
 @media (max-width: 75em) {
   /* 9px / 16px= 65.25 */
   html{
@@ -28,8 +30,8 @@
   .header{
     padding: 0 3.2rem;
   }
-  .hero{
-    gap: 4.8rem;
+  .hero-container{
+    gap: 4.2rem;
   }
   .heading-secondary{
     font-size: 3.6rem;
@@ -53,9 +55,51 @@
 /************************/
 /* BELOW 944px (Tablets) */
 /************************/
-/* 8px / 16px= 50 */
+/* 944px / 16px = 59 */
 @media (max-width: 59em) {
+  /* 8px / 16px= 50 */
   html{
     font-size: 50%;
+  }
+  .hero-container{
+    grid-template-columns: 1fr;
+    padding: 0 8rem;
+    gap: 6.4rem;
+  }
+  .hero-text-box,
+  .hero-img-box{
+    text-align: center;
+  }
+  .hero-img{
+    width: 60%;
+  }
+  .delivered-meals{
+    justify-content: center;
+    margin-top: 3.2rem;
+  }
+  .featured-logos img{
+    height: 2.4rem;
+  }
+  .step-number{
+    font-size: 7.4rem;
+  }
+  .meal-text-container{
+    padding: 3.2rem;
+    padding-top: 2.4rem;
+  }
+  .section-testimonials{
+    grid-template-columns: 1fr;
+  }
+  .gallery{
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .cta{
+    grid-template-columns: 3fr 2fr;
+  }
+  .cta-form{
+    grid-template-columns: 1fr;
+  }
+  .btn--form{
+    margin-top: 2.4rem;
   }
 }
