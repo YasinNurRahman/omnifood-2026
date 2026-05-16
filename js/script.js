@@ -1,7 +1,7 @@
-console.log('hello world');
+console.log("hello world");
 
-const myName = 'mac mac';
-const h1 = document.querySelector('.heading-primary');
+const myName = "mac mac";
+const h1 = document.querySelector(".heading-primary");
 console.log(h1);
 console.log(myName);
 // h1.addEventListener('click', function () {
@@ -10,7 +10,7 @@ console.log(myName);
 // });
 
 // Set current year
-const yearEl = document.querySelector('.year');
+const yearEl = document.querySelector(".year");
 const currentYear = new Date().getFullYear();
 console.log(currentYear);
 yearEl.textContent = currentYear;
@@ -18,29 +18,53 @@ yearEl.textContent = currentYear;
 // Make mobile nav work
 const btnNavEl = document.querySelector(".btn-mobile-nav");
 const headerEl = document.querySelector(".header");
-btnNavEl.addEventListener('click', function () {
-  headerEl.classList.toggle("nav-open");
+btnNavEl.addEventListener("click", function () {
+	headerEl.classList.toggle("nav-open");
 });
 
+// Smooth scrolling animation
+const allLinksEl = document.querySelectorAll("a:link");
+allLinksEl.forEach(function (link) {
+	link.addEventListener("click", function (e) {
+		e.preventDefault();
+		const linkHref = link.getAttribute("href");
 
+		// scroll back to top
+		if (linkHref == "#")
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth",
+			});
+
+		// scroll to sections
+		if (linkHref !== "#" && linkHref.startsWith("#")) {
+			const sectionEl = document.querySelector(linkHref);
+			sectionEl.scrollIntoView({ behavior: "smooth" });
+		}
+
+		// Close mobile nav side bar
+		if (link.classList.contains("main-nav-link"))
+			headerEl.classList.toggle("nav-open");
+	});
+});
 
 ///////////////////////////////////////////////////////////
 // Fixing flexbox gap property missing in some Safari versions
 function checkFlexGap() {
-  var flex = document.createElement("div");
-  flex.style.display = "flex";
-  flex.style.flexDirection = "column";
-  flex.style.rowGap = "1px";
+	var flex = document.createElement("div");
+	flex.style.display = "flex";
+	flex.style.flexDirection = "column";
+	flex.style.rowGap = "1px";
 
-  flex.appendChild(document.createElement("div"));
-  flex.appendChild(document.createElement("div"));
+	flex.appendChild(document.createElement("div"));
+	flex.appendChild(document.createElement("div"));
 
-  document.body.appendChild(flex);
-  var isSupported = flex.scrollHeight === 1;
-  flex.parentNode.removeChild(flex);
-  console.log(isSupported);
+	document.body.appendChild(flex);
+	var isSupported = flex.scrollHeight === 1;
+	flex.parentNode.removeChild(flex);
+	console.log(isSupported);
 
-  if (!isSupported) document.body.classList.add("no-flexbox-gap");
+	if (!isSupported) document.body.classList.add("no-flexbox-gap");
 }
 checkFlexGap();
 
